@@ -1,0 +1,141 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/883ba9c28f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>SneakPeak - Home of Entertainment</title>
+  </head>
+  <body class="bg-black">
+    <div class="hero">
+        <nav class="p-5 w-full flex items-center justify-between bg-slate-950 border-yellow-600 border-b-2 rounded-xl">
+    
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/"><h2 class="text-white text-3xl font-extrabold mb-3 tracking-tight">SneakPeak</h2></a>
+            </div>
+
+            <!-- Search -->
+            <div class="search hidden md:block md:w-80 px-2">
+                <form method="get" action="{% url 'search' %}" class="relative w-full bg-slate-900">
+                    <input 
+                        name="q"
+                        class="w-full p-2 pl-9 border border-gray-500 rounded-xl bg-transparent text-white outline-none"
+                        type="text" placeholder="Search Movie..."
+                    >
+                    <i class="fa-solid fa-magnifying-glass text-yellow-500 absolute left-2 top-1/2 -translate-y-1/2"></i>
+                </form>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="menu hidden md:block">
+                <ul class="flex h-full items-center space-x-5 text-white">
+                    <li><a class="hover:text-yellow-500 hover:font-bold" href="/">Home</a></li>
+                    <li><a class="hover:text-yellow-500 hover:font-bold" href="{% url 'genre_list' %}">Genre</a></li>
+                    <li><a class="hover:text-yellow-500 hover:font-bold" href="{% url 'movie_list' %}">Movies</a></li>
+                </ul>
+            </div>
+
+            <!-- Mobile Buttons -->
+            <div class="flex items-center md:hidden gap-3">
+                <!-- Mobile Search Icon -->
+                <button id="mobileSearchBtn" class="text-yellow-500 text-xl">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <!-- Hamburger -->
+                <div id="menuBtn">
+                    <i class="fa-solid fa-bars text-yellow-500 text-2xl"></i>
+                </div>
+            </div>
+            
+        </nav>
+
+        <!-- Mobile Search Input -->
+        <div id="mobileSearch"  class="hidden p-4 md:hidden">
+            <form method="get" action="{% url 'search' %}" class="relative w-full bg-slate-900">
+                <input 
+                    name="q"
+                    class="w-full p-2 pl-9 border border-gray-500 rounded-xl bg-transparent text-white outline-none"
+                    type="text" placeholder="Search Movie..."
+                >
+                <i class="fa-solid fa-magnifying-glass text-yellow-500 absolute left-2 top-1/2 -translate-y-1/2"></i>
+            </form>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden flex-col bg-slate-950 p-4 md:hidden space-y-3 space-x-5 text-white">
+            <ul class="flex h-full items-center space-x-5 text-white">
+                    <li><a class="hover:text-yellow-500 hover:font-bold" href="/">Home</a></li>
+                    <li><a class="hover:text-yellow-500 hover:font-bold" href="{% url 'genre_list' %}">Genre</a></li>
+                    <li><a class="hover:text-yellow-500 hover:font-bold" href="{% url 'movie_list' %}">Movies</a></li>
+            </ul>
+        </div>
+
+{% block content %}
+
+{% endblock %}
+
+    <footer class="bg-slate-950 text-gray-400 mt-10 border-t border-gray-800 relative">
+
+    <!-- Top glow line -->
+    <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-yellow-500 to-red-500"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-14">
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
+
+        <!-- Brand -->
+        <div class="col-span-2 md:col-span-2">
+            <a href="/"><h2 class="text-white text-3xl font-extrabold mb-3 tracking-tight">SneakPeak</h2></a>
+            <p class="text-sm mb-6 text-gray-400 leading-relaxed">
+            Download and stream the best movies and TV shows anytime, anywhere.
+            </p>
+
+            <!-- Social icons -->
+            <div class="flex space-x-4 text-xl">
+            <a href="#" class="hover:text-yellow-500 hover:scale-110 transition"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-gray-800 text-center py-4 text-xs text-gray-500">
+        © <span id="year"></span> SneakPeak — All Rights Reserved.
+    </div>
+
+    </footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+
+
+
+  </body>
+    <script>
+        // Mobile menu toggle
+        document.getElementById("menuBtn").onclick = () => {
+        document.getElementById("mobileMenu").classList.toggle("hidden");
+        };
+
+        // Mobile search toggle
+        document.getElementById("mobileSearchBtn").onclick = () => {
+        document.getElementById("mobileSearch").classList.toggle("hidden");
+        };
+
+    </script>
+
+</html>

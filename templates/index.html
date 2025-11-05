@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <section class="w-full h-[70vh] md:h-[90vh] relative text-white flex items-center">
+    
+            <!-- Background Image -->
+            <img 
+                src="{% static 'assets/download.jpg' %}" 
+                class="absolute top-0 left-0 w-full h-full object-cover"
+                alt="Hero Background"
+            >
+            
+            <!-- Dark Overlay -->
+            <div class="absolute w-full h-full bg-black/70"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 px-6 md:px-16 max-w-2xl space-y-4">
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+                    Unlimited Movies, Series & Entertainment
+                </h1>
+
+                <p class="text-gray-300 text-sm md:text-lg">
+                    Stream and download the latest movies and TV shows anytime, anywhere.
+                </p>
+
+                <div class="flex gap-3">
+                    <a class="bg-yellow-500 text-black font-bold px-5 py-2 rounded-lg hover:bg-yellow-600 transition">
+                        Watch Now
+                    </a>
+                    <a class="border border-gray-400 px-5 py-2 rounded-lg hover:bg-gray-700 transition">
+                        Browse Movies
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <div class="main mt-10">
+        <div class="trending px-4 py-10">
+
+            <h1 class="text-gray-200 text-2xl font-bold mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-fire text-red-500"></i>
+                Trending
+            </h1>
+            <div class="grid m-auto px-4 py-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+
+            <!-- Movie Card -->
+                {% for movie in trending %}
+                    <div class="relative group cursor-pointer aspect-[2/3]">
+                        
+                        <a href="{% url 'movie_detail' movie.id %}">
+                            <img src="{{ movie.image.url }}" 
+                            class="w-full h-full object-cover rounded-lg shadow-md group-hover:brightness-75 transition" alt="">
+
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                                <i class="fa-solid fa-play text-white text-3xl bg-black bg-opacity-50 p-3 rounded-full"></i>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+         <div class="trending px-4 py-10">
+
+            <h1 class="text-gray-200 text-2xl font-bold mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-clipboard-user text-yellow-500"></i>
+                Staff Picks
+            </h1>
+            <div class="grid m-auto px-4 py-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+
+            <!-- Movie Card -->
+                {% for movie in staff_pick %}
+                    <div class="relative group cursor-pointer aspect-[2/3]">
+                        
+                        <a href="{% url 'movie_detail' movie.id %}">
+                            <img src="{{ movie.image.url }}" 
+                            class="w-full h-full object-cover rounded-lg shadow-md group-hover:brightness-75 transition" alt="">
+
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                                <i class="fa-solid fa-play text-white text-3xl bg-black bg-opacity-50 p-3 rounded-full"></i>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+            
+        </div>
+        <div class="trending px-4 py-10">
+
+            <h1 class="text-gray-200 text-2xl font-bold mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-video text-green-500"></i> 
+                Latest
+            </h1>
+            <div class="grid m-auto px-4 py-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+
+            <!-- Movie Card -->
+                {% for m in movie %}
+                    <div class="relative group cursor-pointer aspect-[2/3]">
+                        
+                        <a href="{% url 'movie_detail' m.id %}">
+                            <img src="{{ m.image.url }}" 
+                            class="w-full h-full object-cover rounded-lg shadow-md group-hover:brightness-75 transition" alt="">
+
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                                <i class="fa-solid fa-play text-white text-3xl bg-black bg-opacity-50 p-3 rounded-full"></i>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock %}
