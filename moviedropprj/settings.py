@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-yfkmlw3mc^ye8s_@lx^_+4&)i=c*1u+r&0@(0y3v7!shea%+yz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','sneakpeak.pxxl.click']
 
 
 # Application definition
@@ -142,3 +142,4 @@ JAZZMIN_SETTINGS = {
     'welcome_sign': 'Welcom to MovieDrop'
 
 }
+
